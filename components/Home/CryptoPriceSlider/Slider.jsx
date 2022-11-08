@@ -56,13 +56,14 @@ function Slider() {
         alignItems: "center",
         position: "sticky",
         top: 0,
+        zIndex: 10,
       }}
     >
       <Swiper
         slidesPerView={2}
         spaceBetween={0}
         autoplay={{
-          delay: 2500,
+          delay: 1500,
           disableOnInteraction: false,
         }}
         modules={[Autoplay]}

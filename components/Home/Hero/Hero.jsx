@@ -9,32 +9,34 @@ import PhoneInput from "react-phone-number-input";
 
 function Hero() {
   const [Country, setCountry] = useState("PK");
+  console.log(process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY);
 
-  // async function lookupCountry({ latitude, longitude }) {
-  //   const URL = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}`;
+  async function lookupCountry({ latitude, longitude }) {
+    const URL = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}`;
 
-  //   const locationData = await fetch(URL).then((res) => res.json());
+    const locationData = await fetch(URL).then((res) => res.json());
 
-  //   const [{ address_components }] = locationData.results.filter(({ types }) =>
-  //     types.includes("country")
-  //   );
-  //   const [{ short_name }] = address_components;
+    const [{ address_components }] = locationData.results.filter(({ types }) =>
+      types.includes("country")
+    );
+    const [{ short_name }] = address_components;
+    console.log(short_name);
 
-  //   return short_name;
-  // }
+    return short_name;
+  }
 
-  // async function handleNavigator(pos) {
-  //   const { latitude, longitude } = pos.coords;
-  //   const userCountryCode = await lookupCountry({ latitude, longitude });
-  //   setCountry(userCountryCode);
-  // }
+  async function handleNavigator(pos) {
+    const { latitude, longitude } = pos.coords;
+    const userCountryCode = await lookupCountry({ latitude, longitude });
+    setCountry(userCountryCode);
+  }
 
-  // useEffect(() => {
-  //   navigator.geolocation.getCurrentPosition(handleNavigator, () => {
-  //     console.warn("permission was rejected");
-  //     setCountry("PK");
-  //   });
-  // }, []);
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(handleNavigator, () => {
+      console.warn("permission was rejected");
+      setCountry("PK");
+    });
+  }, []);
 
   const [PhoneNo, setPhoneNo] = useState();
   return (
@@ -42,12 +44,12 @@ function Hero() {
       <Box
         sx={{
           width: "100%",
-          height: {md:"100vh",xs:"auto"},
+          height: { md: "100vh", xs: "auto" },
           background: "#560872",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          py:{md:0,xs:4}
+          py: { md: 0, xs: 4 },
         }}
       >
         <Container
@@ -65,6 +67,7 @@ function Hero() {
               fontSize: { md: "2.5rem", xs: "2rem" },
               fontWeight: 700,
               color: "white",
+              textAlign:"center"
             }}
           >
             Maximise your crypto profits with Bitcode Method!
@@ -72,11 +75,12 @@ function Hero() {
           <Typography
             sx={{
               fontFamily: "Ubuntu",
-              fontSize: { md: "1.5rem", xs: "1.3rem" },
+              fontSize: { md: "1.5rem", xs: "1.5rem" },
               fontWeight: 400,
               color: "white",
               my: 2,
               mb: 6,
+              textAlign:"center"
             }}
           >
             {`Your financial future is in your hands, we'll help you kick start your trading journey today.`}
@@ -95,12 +99,12 @@ function Hero() {
             <Box
               sx={{
                 width: { md: "55%", xs: "auto" },
-                height: {md:"420px",xs:"auto"},
+                height: { md: "420px", xs: "auto" },
                 mr: { md: 1.5 },
-                mt:{md:0,xs:3},
+                mt: { md: 0, xs: 3 },
                 display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
+                justifyContent: "center",
+                alignItems: "center",
               }}
             >
               <iframe
@@ -121,8 +125,8 @@ function Hero() {
                 alignItems: "center",
                 flexDirection: "column",
                 background: "white",
-                px: { md: 4, xs: 2 },
-                py: { md: 6.5, xs: 2 },
+                px: { md: 4, xs: 4 },
+                py: { md: 5.5, xs: 4 },
                 borderRadius: "1rem",
               }}
             >
@@ -182,7 +186,7 @@ function Hero() {
                   justifyContent: "center",
                   alignItems: "start",
                   flexDirection: "column",
-                  mt: 2,
+                  mt: 1,
                 }}
               >
                 <Typography
@@ -231,7 +235,7 @@ function Hero() {
                   justifyContent: "center",
                   alignItems: "start",
                   flexDirection: "column",
-                  mt: 2,
+                  mt: 1,
                 }}
               >
                 <Typography
@@ -280,7 +284,7 @@ function Hero() {
                   justifyContent: "center",
                   alignItems: "start",
                   flexDirection: "column",
-                  mt: 2,
+                  mt: 1,
                 }}
               >
                 <Typography
@@ -326,6 +330,29 @@ function Hero() {
                   />
                 </Box>
               </Box>
+
+              <Button
+                sx={{
+                  py: 0.1,
+                  width: "100%",
+                  boxShadow: "0px 5px 20px 0px rgba(0,0,0,0.3)",
+                  background: "#703ddb",
+                  borderRadius: "0.5rem",
+                  fontFamily: "Ubuntu",
+                  fontSize: "1.2rem",
+                  fontWeight: 500,
+                  lineHeight: "3rem",
+                  color: "white",
+                  // textTransform: "capitalize",
+                  "&:hover": {
+                    boxShadow: "0px 5px 20px 0px rgba(0,0,0,0.3)",
+                    background: "#703ddb",
+                  },
+                  mt: 1.5,
+                }}
+              >
+                Register for Free
+              </Button>
             </Box>
           </Box>
         </Container>

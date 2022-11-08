@@ -155,6 +155,7 @@ function Homepage() {
           background: "#fff",
           position: "fixed",
           bottom: 0,
+          zIndex: 11,
         }}
       >
         <Button

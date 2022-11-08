@@ -1,5 +1,6 @@
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Header from "../components/Global/Header.jsx";
+import Footer from "../components/Global/Footer.jsx";
 
 const theme = createTheme({
   breakpoints: {
@@ -20,6 +21,7 @@ export default function Layout({ children }) {
       <ThemeProvider theme={theme}>
         <Header />
         <main>{children}</main>
+        <Footer />
       </ThemeProvider>
     </>
   );
