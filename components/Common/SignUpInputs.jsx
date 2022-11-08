@@ -9,7 +9,6 @@ import PhoneInput from "react-phone-number-input";
 
 function SignUpInputs() {
   const [Country, setCountry] = useState("PK");
-  console.log(process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY);
 
   async function lookupCountry({ latitude, longitude }) {
     const URL = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}`;
@@ -243,6 +242,9 @@ function SignUpInputs() {
           }}
         >
           <PhoneInput
+            international={true}
+            // country={Country}
+            countryCallingCodeEditable={false}
             defaultCountry={Country}
             value={PhoneNo}
             onChange={setPhoneNo}
