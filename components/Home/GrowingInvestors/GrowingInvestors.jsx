@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext } from "react";
 import { Box, Container } from "@mui/system";
 import Button from "@mui/material/Button";
 import Image from "next/image";
@@ -11,8 +11,15 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Autoplay, Pagination } from "swiper";
+import { AppContext } from "../../../pages/layout";
 
 function GrowingInvestors() {
+  const {
+    DialogueRegister,
+    setDialogueRegister,
+    DialogueLogin,
+    setDialogueLogin,
+  } = useContext(AppContext);
   return (
     <>
       <Box
@@ -76,7 +83,7 @@ function GrowingInvestors() {
                 1024: {
                   slidesPerView: 3,
                   spaceBetween: 30,
-                  slidesPerGroup: 3, 
+                  slidesPerGroup: 3,
                 },
               }}
               className="mySwiper"
@@ -172,6 +179,7 @@ function GrowingInvestors() {
             </Swiper>
           </Box>
           <Button
+           onClick={() => setDialogueRegister(!DialogueRegister)}
             sx={{
               py: 0.4,
               px: 2,
@@ -187,7 +195,9 @@ function GrowingInvestors() {
               "&:hover": {
                 boxShadow: "0px 5px 20px 0px rgba(0,0,0,0.3)",
                 background: "#703ddb",
+                transform: "scale(1.05)",
               },
+              transition: "all 0.4s ease",
             }}
           >
             Register for Free

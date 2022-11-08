@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext } from "react";
 import { Box, Container } from "@mui/system";
 import Button from "@mui/material/Button";
 import Image from "next/image";
@@ -9,8 +9,16 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Grid from "@mui/material/Grid";
 import IconButton from "@mui/material/IconButton";
+import { AppContext } from "../../../pages/layout";
+
 
 function FAQ() {
+  const {
+    DialogueRegister,
+    setDialogueRegister,
+    DialogueLogin,
+    setDialogueLogin,
+  } = useContext(AppContext);
   return (
     <>
       <Box
@@ -115,6 +123,7 @@ function FAQ() {
             </Grid>
           </Box>
           <Button
+          onClick={() => setDialogueRegister(!DialogueRegister)}
             sx={{
               py: 0.4,
               px: 2,
@@ -130,7 +139,9 @@ function FAQ() {
               "&:hover": {
                 boxShadow: "0px 5px 20px 0px rgba(0,0,0,0.3)",
                 background: "#703ddb",
+                transform:"scale(1.05)",
               },
+              transition:"all 0.4s ease",
               mt: 6,
             }}
           >

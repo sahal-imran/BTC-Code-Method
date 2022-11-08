@@ -7,8 +7,16 @@ import Grid from "@mui/material/Grid";
 import CreditScoreIcon from "@mui/icons-material/CreditScore";
 import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
 import MovingIcon from "@mui/icons-material/Moving";
+import React, { useContext } from "react";
+import { AppContext } from "../../../pages/layout";
 
 function GetStarted() {
+  const {
+    DialogueRegister,
+    setDialogueRegister,
+    DialogueLogin,
+    setDialogueLogin,
+  } = useContext(AppContext);
   return (
     <>
       <Box
@@ -320,6 +328,7 @@ function GetStarted() {
             </Box>
 
             <Button
+            onClick={() => setDialogueRegister(!DialogueRegister)}
               sx={{
                 py: 0.4,
                 px: 2,
@@ -335,7 +344,9 @@ function GetStarted() {
                 "&:hover": {
                   boxShadow: "0px 5px 20px 0px rgba(0,0,0,0.3)",
                   background: "#703ddb",
+                  transform:"scale(1.05)",
                 },
+                transition:"all 0.4s ease",
                 mt: 10,
               }}
             >

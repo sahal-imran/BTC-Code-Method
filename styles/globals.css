@@ -44,3 +44,6 @@ td {
   padding: 15px;
   text-align: start;
 }
+.MuiDialog-paper{
+  border-radius: 1rem;
+}

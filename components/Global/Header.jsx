@@ -1,11 +1,20 @@
+import React, { useContext } from "react";
 import { Box, Container } from "@mui/system";
 import Button from "@mui/material/Button";
 import Image from "next/image";
 import Typography from "@mui/material/Typography";
 import Link from "next/link";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+import { AppContext } from "../../pages/layout";
 
 function Homepage() {
+  const {
+    DialogueRegister,
+    setDialogueRegister,
+    DialogueLogin,
+    setDialogueLogin,
+  } = useContext(AppContext);
+
   return (
     <>
       <Box
@@ -54,6 +63,7 @@ function Homepage() {
             }}
           >
             <Button
+              onClick={() => setDialogueLogin(!DialogueLogin)}
               sx={{
                 py: 0.4,
                 px: 2,
@@ -77,6 +87,7 @@ function Homepage() {
               Login
             </Button>
             <Button
+              onClick={() => setDialogueRegister(!DialogueRegister)}
               sx={{
                 py: 0.4,
                 px: 2,

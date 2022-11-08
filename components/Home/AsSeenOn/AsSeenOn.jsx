@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext } from "react";
 import { Box, Container } from "@mui/system";
 import Button from "@mui/material/Button";
 import Image from "next/image";
@@ -6,7 +6,11 @@ import Typography from "@mui/material/Typography";
 import Link from "next/link";
 import Grid from "@mui/material/Grid";
 
+// context
+import { AppContext } from "../../../pages/layout";
+
 function AsSeenOn() {
+  const { DialogueRegister, setDialogueRegister } = useContext(AppContext);
   return (
     <>
       <Box
@@ -105,6 +109,7 @@ function AsSeenOn() {
                 {`If you're interested in becoming a part of the cryptocurrency revolution, you've made a wise decision by choosing Bitcode Method to assist you in making the most of your trading experience.`}
               </Typography>
               <Button
+                onClick={() => setDialogueRegister(!DialogueRegister)}
                 sx={{
                   py: 0.4,
                   px: 2,
@@ -120,7 +125,9 @@ function AsSeenOn() {
                   "&:hover": {
                     boxShadow: "0px 5px 20px 0px rgba(0,0,0,0.3)",
                     background: "#703ddb",
+                    transform: "scale(1.05)",
                   },
+                  transition: "all 0.4s ease",
                 }}
               >
                 Register for Free
@@ -382,6 +389,7 @@ function AsSeenOn() {
           </Typography>
 
           <Button
+          onClick={() => setDialogueRegister(!DialogueRegister)}
             sx={{
               alignSelf: "start",
               py: 0.4,
@@ -398,7 +406,9 @@ function AsSeenOn() {
               "&:hover": {
                 boxShadow: "0px 5px 20px 0px rgba(0,0,0,0.3)",
                 background: "#703ddb",
+                transform: "scale(1.05)",
               },
+              transition: "all 0.4s ease",
               mt: 10,
             }}
           >

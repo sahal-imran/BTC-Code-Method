@@ -15,7 +15,7 @@ function Antivirious() {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          py: { md: 4, xs: 4 },
+          py: { md: 4, xs: 2 },
         }}
       >
         <Box
