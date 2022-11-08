@@ -45,5 +45,8 @@ td {
   text-align: start;
 }
 .MuiDialog-paper{
-  border-radius: 1rem;
+  border-radius: 1rem !important;
+}
+.MuiBackdrop-root.css-yiavyu-MuiBackdrop-root-MuiDialog-backdrop {
+  background-color: rgba(0,0,0,0.6);
 }

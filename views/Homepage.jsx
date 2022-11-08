@@ -52,6 +52,9 @@ function Homepage() {
       <Dialog
         open={DialogueRegister}
         onClose={() => setDialogueRegister(!DialogueRegister)}
+        sx={{
+          borderRadius: "1rem",
+        }}
       >
         <Box
           sx={{
@@ -97,8 +100,8 @@ function Homepage() {
             <Box
               sx={{
                 position: "relative",
-                width: {sm:"120px",xs:"80px"},
-                height: {sm:"50px",xs:"36px"},
+                width: { sm: "120px", xs: "80px" },
+                height: { sm: "50px", xs: "36px" },
               }}
             >
               <Image
@@ -111,8 +114,8 @@ function Homepage() {
             <Box
               sx={{
                 position: "relative",
-                width: {sm:"120px",xs:"80px"},
-                height: {sm:"50px",xs:"36px"},
+                width: { sm: "120px", xs: "80px" },
+                height: { sm: "50px", xs: "36px" },
                 mx: { md: 3, xs: 1 },
               }}
             >
@@ -126,8 +129,8 @@ function Homepage() {
             <Box
               sx={{
                 position: "relative",
-                width: {sm:"150px",xs:"80px"},
-                height: {sm:"56px",xs:"36px"},
+                width: { sm: "150px", xs: "80px" },
+                height: { sm: "56px", xs: "36px" },
               }}
             >
               <Image
@@ -145,6 +148,9 @@ function Homepage() {
       <Dialog
         open={DialogueLogin}
         onClose={() => setDialogueLogin(!DialogueLogin)}
+        sx={{
+          borderRadius: "1rem",
+        }}
       >
         <Box
           sx={{
