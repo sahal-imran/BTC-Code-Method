@@ -7,8 +7,63 @@ import Link from "next/link";
 import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
 import Anchorlink from "@mui/material/Link";
+import Snackbar from "@mui/material/Snackbar";
+import IconButton from "@mui/material/IconButton";
+import CloseIcon from "@mui/icons-material/Close";
 
 function LoginForm() {
+  const [Email, setEmail] = useState();
+  const [Password, setPassword] = useState();
+
+  const [Val_Email, setVal_Email] = useState(false);
+  const [Val_Password, setVal_Password] = useState(false);
+
+  const OnFocusInput = () => {
+    setVal_Email(false);
+    setVal_Password(false);
+  };
+
+  const ClickLogin = () => {
+    if (!Email || Email === "") {
+      setVal_Email(true);
+
+      return;
+    }
+    if (!Password || Password === "") {
+      setVal_Password(true);
+      return;
+    }
+    handleClick();
+  };
+
+  // Snackbar
+  const [open, setOpen] = React.useState(false);
+
+  const handleClick = () => {
+    setOpen(true);
+  };
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpen(false);
+  };
+
+  const action = (
+    <React.Fragment>
+      <IconButton
+        size="small"
+        aria-label="close"
+        color="inherit"
+        onClick={handleClose}
+      >
+        <CloseIcon fontSize="small" />
+      </IconButton>
+    </React.Fragment>
+  );
+
   return (
     <>
       <Box
@@ -42,14 +97,25 @@ function LoginForm() {
             Email:
           </Typography>
           <Box
-            sx={{
-              width: "100%",
-              height: "40px",
-              border: "2px solid #333333",
-              borderRadius: "0.5rem",
-            }}
+            sx={
+              Val_Email
+                ? {
+                    width: "100%",
+                    height: "40px",
+                    border: "2px solid red",
+                    borderRadius: "0.5rem",
+                  }
+                : {
+                    width: "100%",
+                    height: "40px",
+                    border: "2px solid #333333",
+                    borderRadius: "0.5rem",
+                  }
+            }
           >
             <input
+              value={Email}
+              onChange={(e) => setEmail(e.target.value)}
               type="email"
               style={{
                 width: "100%",
@@ -91,14 +157,25 @@ function LoginForm() {
             Password:
           </Typography>
           <Box
-            sx={{
-              width: "100%",
-              height: "40px",
-              border: "2px solid #333333",
-              borderRadius: "0.5rem",
-            }}
+            sx={
+              Val_Password
+                ? {
+                    width: "100%",
+                    height: "40px",
+                    border: "2px solid red",
+                    borderRadius: "0.5rem",
+                  }
+                : {
+                    width: "100%",
+                    height: "40px",
+                    border: "2px solid #333333",
+                    borderRadius: "0.5rem",
+                  }
+            }
           >
             <input
+              value={Password}
+              onChange={(e) => setPassword(e.target.value)}
               type="password"
               style={{
                 width: "100%",
@@ -118,6 +195,7 @@ function LoginForm() {
         </Box>
 
         <Button
+          onClick={ClickLogin}
           sx={{
             py: 0.1,
             width: "100%",
@@ -167,6 +245,15 @@ function LoginForm() {
           </Anchorlink>
         </Typography>
       </Box>
+
+      <Snackbar
+        color="#703ddb"
+        open={open}
+        autoHideDuration={6000}
+        onClose={handleClose}
+        message="Thank you!"
+        action={action}
+      />
     </>
   );
 }
