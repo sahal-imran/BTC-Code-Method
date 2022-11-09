@@ -36,6 +36,24 @@ function LoginForm() {
     handleClick();
   };
 
+  const [Is_Val_Email, setIs_Val_Email] = useState(false);
+
+  const isEmail = (email) => {
+    const emailRegex =
+      /^(([^<>()\[\].,;:\s@"]+(\.[^<>()\[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i;
+
+    return emailRegex.test(email);
+  };
+
+  const EmailChange = (email) => {
+    if (!isEmail(email)) {
+      setIs_Val_Email(true);
+    } else {
+      setIs_Val_Email(false);
+    }
+    setEmail(email);
+  };
+
   // Snackbar
   const [open, setOpen] = React.useState(false);
 
@@ -115,7 +133,7 @@ function LoginForm() {
           >
             <input
               value={Email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => EmailChange(e.target.value)}
               type="email"
               style={{
                 width: "100%",
@@ -133,6 +151,21 @@ function LoginForm() {
             />
           </Box>
         </Box>
+
+        {Is_Val_Email && (
+          <Typography
+            sx={{
+              alignSelf: "start",
+              fontFamily: "Ubuntu",
+              fontSize: "0.8rem",
+              fontWeight: 500,
+              color: "red",
+              mt: 0.6,
+            }}
+          >
+            Invalid email
+          </Typography>
+        )}
 
         {/* Password input */}
         <Box

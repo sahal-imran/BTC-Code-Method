@@ -40,8 +40,25 @@ function SignUpInputs() {
     });
   }, []);
 
+  const [Is_Val_Email, setIs_Val_Email] = useState(false);
+
+  const isEmail = (email) => {
+    const emailRegex =
+      /^(([^<>()\[\].,;:\s@"]+(\.[^<>()\[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i;
+
+    return emailRegex.test(email);
+  };
+
+  const EmailChange = (email) => {
+    if (!isEmail(email)) {
+      setIs_Val_Email(true);
+    } else {
+      setIs_Val_Email(false);
+    }
+    setEmail(email);
+  };
+
   // Validations
-  const [Val, setVal] = useState(false);
   const [Val_Name, setVal_Name] = useState(false);
   const [Val_Surname, setVal_Surname] = useState(false);
   const [Val_Email, setVal_Email] = useState(false);
@@ -285,7 +302,7 @@ function SignUpInputs() {
             <input
               onFocus={OnFocusInput}
               value={Email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => EmailChange(e.target.value)}
               type="email"
               style={{
                 width: "100%",
@@ -303,6 +320,20 @@ function SignUpInputs() {
             />
           </Box>
         </Box>
+        {Is_Val_Email && (
+          <Typography
+            sx={{
+              alignSelf: "start",
+              fontFamily: "Ubuntu",
+              fontSize: "0.8rem",
+              fontWeight: 500,
+              color: "red",
+              mt: 0.6,
+            }}
+          >
+            Invalid email
+          </Typography>
+        )}
 
         {/* Phone no input */}
         <Box
