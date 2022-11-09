@@ -61,7 +61,7 @@ function GrowingInvestors() {
               slidesPerView={1}
               spaceBetween={0}
               autoplay={{
-                delay: 10000,
+                delay: 1500,
                 disableOnInteraction: false,
               }}
               pagination={{
